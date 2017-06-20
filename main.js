@@ -54,7 +54,7 @@ app.controller('GoogleMap',['$scope','$rootScope','MapData',function($scope,$r,$
 app.factory('LoadData',['$http',function($http){
   var loader = $http({
     headers:{'Content-Type':'application/json'},
-    url:"MOCK_DATA.json",
+    url:"ALL_PINS.json",
     method:'POST',
   });
   return loader;
