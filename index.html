@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-2<html>
-3  <head>
+<html lang="en-US">
+<head>
+<link rel="stylesheet" href="style.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7qdBT0VUw1jLaj6DbrFBzaECK9hejx0"></script>
+<script type="text/javascript" src="main.js"></script>
+</head>
+<body ng-app="locatePin">
+<div id="main-wrapper">
+<div ng-controller="GoogleMap">
+		<div id="map"></div>
+	</div>
+	<div ng-controller="LocationDetails" id="selectLocation">
+		
+		<table>
+		  	<thead>
+		  		<tr>
+		  			<td>Pin Code</td>
+		  			<td>Latitude</td>
+		  			<td>Longitude</td>
+		  		</tr>
+		  	</thead>
+		  	<tbody>
+		  		<tr ng-repeat="location in locations" ng-if="location.pincode">
+		  			<td><a href="javascript:;" ng-click="showPin(location.pincode,location.latitude,location.longitude)">{{location.pincode}}</a></td>
+		  			<td>{{location.latitude}}</td>
+		  			<td>{{location.longitude}}</td>
+		  		</tr>
+		  	</tbody>
+		  </table>
+	</div>
 	
-	<link rel="stylesheet" href="style.css"/>
-	<script type="text/javasript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-	<!--<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>-->
-	<script type="text/javascript" src="main.js"></script>
-4  </head>
-5  <body ng-app="locatePin">
-6    <div ng-controller="pins"></div>
-7  </body>
-8</html>
+</div>
+
+</body>
+</html>
