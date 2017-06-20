@@ -13,8 +13,26 @@ API key for google maps is AIzaSyAG7qdBT0VUw1jLaj6DbrFBzaECK9hejx0
   $loadData.then(function(resp){
     $scope.locations = resp.data;    
   });
-  $scope.showPin = function(pin,lat,longi){
-  
+  $scope.flag = false
+  /**Start: filter for search**/
+  $scope.filterFn = function(row){
+      // Do some tests
+      if ($scope.flag == false){return true;}
+      else if(row.pincode.match($scope.filterText)){return true;}
+      return false;
+     /*
+      return false;*/
+  };
+  /**Start: filter for search**/
+  $scope.keyhandler = function($event){
+    //$scope.flag = true;
+    /*console.log('search for',$scope.filterText);*/
+  }
+  $scope.submitHanlder = function($event){
+    $event.preventDefault();
+    $event.stopPropagation();
+  }
+  $scope.showPin = function(pin,lat,longi){  
     $map.update(pin,lat,longi);
     $r.$emit('newcord');
   }
